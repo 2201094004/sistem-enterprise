@@ -11,6 +11,7 @@
             <tr>
                 <th>No</th>
                 <th>Role</th>
+                <th>Permission</th>
                 <th>Actions</th> <!-- Kolom aksi untuk edit dan delete -->
             </tr>
         </thead>
@@ -19,6 +20,10 @@
                 <tr>
                     <td>{{ $loop->iteration }}</td> <!-- Iteration for numbering -->
                     <td>{{ $role->name }}</td> <!-- Menampilkan nama role -->
+                    <td>@foreach($role->permissions as $permission)
+                        <span class="badge bg-primary"> {{ $permission->name }}</span>
+                        @endforeach
+                    </td>
                     <td>
                         <!-- Edit Button -->
                         <a href="{{ route('roles.edit', $role->id) }}" class="btn btn-warning">Edit</a>
