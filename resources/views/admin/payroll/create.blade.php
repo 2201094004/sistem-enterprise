@@ -1,14 +1,14 @@
-@extends('layouts.app')
+@extends('admin.app')
 
 @section('content')
 <div class="container">
-    <h1>Add Payroll</h1>
-    
+    <h3>Tambah Payroll</h3>
+
     <form action="{{ route('payroll.store') }}" method="POST">
         @csrf
         
-        <div class="form-group">
-            <label for="user_id">Employee</label>
+        <div class="mb-3">
+            <label for="user_id" class="form-label">Employee</label>
             <select name="user_id" id="user_id" class="form-control" required>
                 <option value="">Select Employee</option>
                 @foreach($employees as $employee)
@@ -17,12 +17,12 @@
             </select>
         </div>
 
-        <div class="form-group">
-            <label for="salary">Salary</label>
+        <div class="mb-3">
+            <label for="salary" class="form-label">Salary</label>
             <input type="number" name="salary" id="salary" class="form-control" required>
         </div>
 
-        <button type="submit" class="btn btn-primary">Save</button>
+        <button type="submit" class="btn btn-success">Simpan</button>
     </form>
 </div>
 @endsection

@@ -21,7 +21,7 @@ class PayrollSeeder extends Seeder
             Payroll::create([
                 'user_id' => $employee->user_id, 
                 'salary' => rand(3000000, 10000000), 
-                'created_at' => now(), 
+                // 'created_at' => now(), 
             ]);
         }
     }

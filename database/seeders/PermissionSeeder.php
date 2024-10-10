@@ -37,5 +37,17 @@ class PermissionSeeder extends Seeder
     Permission::updateORcreate(['name' => 'edit payroll']);
     Permission::updateORcreate(['name' => 'delete payroll']);
 
+     //permission untuk mengelola leave
+     Permission::updateORcreate(['name' => 'show leave']);
+     Permission::updateORcreate(['name' => 'add leave']);
+     Permission::updateORcreate(['name' => 'edit leave']);
+     Permission::updateORcreate(['name' => 'delete leave']);
+
+      //permission untuk mengelola attendances
+    Permission::updateORcreate(['name' => 'show attendances']);
+    Permission::updateORcreate(['name' => 'add attendances']);
+    Permission::updateORcreate(['name' => 'edit attendances']);
+    Permission::updateORcreate(['name' => 'delete attendances']);
+
     }
 }

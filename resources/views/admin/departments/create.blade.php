@@ -14,7 +14,7 @@
             <label for="description">Deskripsi</label>
             <textarea name="description" id="description" class="form-control" rows="4" required></textarea>
         </div>
-        <button type="submit" class="btn btn-primary mt-3">Simpan</button> <!-- Added mt-3 for top margin -->
+        <button type="submit" class="btn btn-success">Simpan</button>
     </form>
 </div>
 @endsection

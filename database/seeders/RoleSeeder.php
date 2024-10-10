@@ -34,6 +34,12 @@ class RoleSeeder extends Seeder
             'show payroll',
             'add payroll',
             'edit payroll',
+            'show leave',
+            'add leave',
+            'edit leave',
+            'show attendances',
+            'add attendances',
+            'edit attendances',
         ]);
     }
 }

@@ -61,7 +61,7 @@
                         </a>
                     </li>
                     <li class="menu-item">
-                        <a href="{{ route('roles.index') }}" class="menu-link">
+                        <a href="{{ route('leave.index') }}" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-calendar"></i>
                             <div data-i18n="Menu 2">Leave</div>
                         </a>
@@ -69,7 +69,7 @@
                     <li class="menu-item">
                         <a href="{{ route('roles.index') }}" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-time-five"></i>
-                            <div data-i18n="Menu 2">Presence</div>
+                            <div data-i18n="Menu 2">Attendances</div>
                         </a>
                     </li>
                 </ul>

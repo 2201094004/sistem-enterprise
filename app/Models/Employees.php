@@ -22,4 +22,10 @@ class Employees extends Model
     {
         return $this->belongsTo(User::class, 'user_id');
     }
+
+    // Hubungan ke model Leave
+    public function leaves()
+    {
+        return $this->hasMany(Leave::class, 'user_id');
+    }
 }

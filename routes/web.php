@@ -8,6 +8,7 @@ use App\Http\Controllers\DepartmentsController;
 use App\Http\Controllers\EmployeesController;
 use App\Http\Controllers\PayrollController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\LeaveController;
 
 /*
 |--------------------------------------------------------------------------
@@ -52,6 +53,9 @@ Route::resource('employees', EmployeesController::class);
 
 Route::resource('payroll', PayrollController::class);
 Route::get('/payrolls', [PayrollController::class, 'index'])->name('payroll.index');
+
+Route::resource('leave', \App\Http\Controllers\LeaveController::class);
+
 
 
 
