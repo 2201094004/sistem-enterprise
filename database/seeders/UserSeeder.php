@@ -32,7 +32,7 @@ class UserSeeder extends Seeder
             'email' => 'cindy@email.com',
             'password' => bcrypt('password'),
         ]);
-        $cindy->assignRole('operator'); //role
+        $cindy->assignRole('operator'); 
         $cindy->givePermissionTo('delete users'); //memberikan akses permission langsung
     }
 }

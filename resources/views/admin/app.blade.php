@@ -27,7 +27,7 @@
             <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
                 <div class="app-brand demo">
                     <a href="{{ route('dashboard') }}" class="app-brand-link">
-                        <h1 class="h4">Laravel Admin Starter</h1>
+                        <h1 class="h4">Hallo Admin</h1>
                     </a>
 
                     <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
@@ -37,36 +37,62 @@
 
                 <div class="menu-inner-shadow"></div>
 
-                <ul class="menu-inner py-1">
+                <ul class="menu-inner py-1" style="margin-bottom: 0;">
                     <!-- Main Menu -->
                     <li class="menu-header small text-uppercase">
-                        <span class="menu-header-text">Main Menu</span>
+                        <span class="menu-header-text">Human Resources</span>
                     </li>
                     <li class="menu-item">
-                        <a href="#" class="menu-link menu-toggle">
-                            <i class="menu-icon tf-icons bx bx-home"></i>
-                            <div data-i18n="Menu 1">Menu 1</div>
+                        <a href="{{ route('departments.index') }}" class="menu-link">
+                            <i class="menu-icon tf-icons bx bx-building-house"></i>
+                            <div data-i18n="Menu 1">Departments</div>
                         </a>
-                        <ul class="menu-sub">
-                            <li class="menu-item">
-                                <a href="{{ route('submenu1') }}" class="menu-link">
-                                    <div>Users</div>
-                                </a>
-                            </li>
-                            <li class="menu-item">
-                                <a href="{{ route('roles.index') }}" class="menu-link">
-                                    <div data-i18n="Sub Menu 2">Roles</div>
-                                </a>
-                            </li>
-                        </ul>
+                    </li>                    
+                    <li class="menu-item">
+                        <a href="{{ route('employees.index') }}" class="menu-link">
+                            <i class="menu-icon tf-icons bx bx-group"></i>
+                            <div data-i18n="Menu 2">Employees</div>
+                        </a>
                     </li>
                     <li class="menu-item">
-                        <a href="#" class="menu-link">
-                            <i class="menu-icon tf-icons bx bx-menu"></i>
-                            <div data-i18n="Menu 2">Menu 2</div>
+                        <a href="{{ route('payroll.index') }}" class="menu-link">
+                            <i class="menu-icon tf-icons bx bx-wallet"></i>
+                            <div data-i18n="Menu 2">Payroll</div>
+                        </a>
+                    </li>
+                    <li class="menu-item">
+                        <a href="{{ route('roles.index') }}" class="menu-link">
+                            <i class="menu-icon tf-icons bx bx-calendar"></i>
+                            <div data-i18n="Menu 2">Leave</div>
+                        </a>
+                    </li>
+                    <li class="menu-item">
+                        <a href="{{ route('roles.index') }}" class="menu-link">
+                            <i class="menu-icon tf-icons bx bx-time-five"></i>
+                            <div data-i18n="Menu 2">Presence</div>
                         </a>
                     </li>
                 </ul>
+                
+                <ul class="menu-inner py-1" style="margin-top: 0;">
+                    <!-- Main Menu -->
+                    <li class="menu-header small text-uppercase">
+                        <span class="menu-header-text">User Management</span>
+                    </li>
+                    <li class="menu-item">
+                        <a href="{{ route('submenu1') }}" class="menu-link ">
+                            <i class="menu-icon tf-icons bx bx-user"></i>
+                            <div data-i18n="Menu 1">Users</div>
+                        </a>
+                    </li>
+                    <li class="menu-item">
+                        <a href="{{ route('roles.index') }}" class="menu-link">
+                            <i class="menu-icon tf-icons bx bx-shield"></i>
+                            <div data-i18n="Menu 2">Roles</div>
+                        </a>
+                    </li>
+                </ul>                
+                
             </aside>
             <!-- / Menu -->
 
@@ -104,11 +130,11 @@
                                             <div class="d-flex">
                                                 <div class="flex-shrink-0 me-3">
                                                     <div class="avatar avatar-online">
-                                                        <img src="{{ asset('assets/img/avatars/1.png') }}" alt class="w-px-40 h-auto rounded-circle" />
+                                                        <img src="{{ asset('assets/img/avatar/vira.jpeg') }}" alt class="w-px-40 h-auto rounded-circle" />
                                                     </div>
                                                 </div>
                                                 <div class="flex-grow-1">
-                                                    <span class="fw-semibold d-block">John Doe</span>
+                                                    <span class="fw-semibold d-block">Syavira Indah M</span>
                                                     <small class="text-muted">Admin</small>
                                                 </div>
                                             </div>
@@ -165,7 +191,7 @@
                     </div>
                     <!-- / Main Content -->
 
-                    <!-- Footer -->
+                    {{-- <!-- Footer -->
                     <footer class="content-footer footer bg-footer-theme">
                         <div class="container-xxl d-flex flex-wrap justify-content-between py-2 flex-md-row flex-column">
                             <div class="mb-2 mb-md-0">
@@ -175,7 +201,7 @@
                             </div>
                         </div>
                     </footer>
-                    <!-- / Footer -->
+                    <!-- / Footer --> --}}
                     <div class="content-backdrop fade"></div>
                 </div>
                 <!-- / Content wrapper -->

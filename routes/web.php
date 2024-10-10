@@ -4,6 +4,10 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\DepartmentsController;
+use App\Http\Controllers\EmployeesController;
+use App\Http\Controllers\PayrollController;
+use App\Http\Controllers\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,9 +41,18 @@ Route::resource('users', UserController::class);
 
 Route::resource('roles', RoleController::class);
 
-
-
 // Auth routes (login, register, password reset, etc.)
 require __DIR__.'/auth.php';
+
+Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
+
+Route::resource('departments', DepartmentsController::class);
+
+Route::resource('employees', EmployeesController::class);
+
+Route::resource('payroll', PayrollController::class);
+Route::get('/payrolls', [PayrollController::class, 'index'])->name('payroll.index');
+
+
 
 

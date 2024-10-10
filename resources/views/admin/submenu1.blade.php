@@ -4,7 +4,7 @@
 <div class="container">
     <h3>Data Table User</h3>
 
-    <a href="{{ route('users.create') }}" class="btn btn-primary mb-3">Add New User</a>
+    <a href="{{ route('users.create') }}" class="btn btn-primary mb-3">Tambah User</a>
 
     <table class="table table-bordered">
         <thead>
