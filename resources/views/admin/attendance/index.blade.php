@@ -2,9 +2,9 @@
 
 @section('content')
 <div class="container">
-    <h3>Payroll</h3>
+    <h3>Daftar Absensi</h3>
 
-    <a href="{{ route('payroll.create') }}" class="btn btn-primary mb-3">Tambah Payroll</a>
+    <a href="{{ route('attendance.create') }}" class="btn btn-primary mb-3">Tambah Absensi</a>
 
     @if(session('success'))
         <div class="alert alert-success">{{ session('success') }}</div>
@@ -14,22 +14,22 @@
         <thead>
             <tr>
                 <th>No</th>
-                <th>User</th>
-                <th>Salary</th>
-                {{-- <th>Created At</th> --}}
+                <th>Employee</th>
+                <th>Tanggal Absensi</th>
+                <th>Status</th>
                 <th>Actions</th>
             </tr>
         </thead>
         <tbody>
-            @foreach($payrolls as $payroll)
+            @foreach($attendances as $attendance)
                 <tr>
                     <td>{{ $loop->iteration }}</td>
-                    <td>{{ $payroll->employee->user->name ?? 'N/A' }}</td> <!-- Menampilkan nama user -->
-                    <td>{{ number_format($payroll->salary) }}</td>
-                    <td>{{ $payroll->created_at->format('Y-m-d') }}</td> <!-- Format tanggal -->
+                    <td>{{ $attendance->employee->user->name ?? 'N/A' }}</td>
+                    <td>{{ $attendance->attendance_date->format('Y-m-d') }}</td>
+                    <td>{{ ucfirst($attendance->status) }}</td>
                     <td>
-                        <a href="{{ route('payroll.edit', $payroll->id) }}" class="btn btn-warning btn-sm">Edit</a>
-                        <form action="{{ route('payroll.destroy', $payroll->id) }}" method="POST" style="display:inline-block;">
+                        <a href="{{ route('attendance.edit', $attendance->id) }}" class="btn btn-warning btn-sm">Edit</a>
+                        <form action="{{ route('attendance.destroy', $attendance->id) }}" method="POST" style="display:inline-block;">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Anda Yakin Data Ini Di Hapus?')">Delete</button>

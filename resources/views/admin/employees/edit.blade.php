@@ -2,9 +2,9 @@
 
 @section('content')
 <div class="container">
-    <h3>Edit Employee: {{ $employee->user_id }}</h3>
+    <h3>Edit Employee{{ $employee->user_id }}</h3>
 
-    <form action="{{ route('employees.update', $employee->id) }}" method="POST">
+    <form action="{{ route('employees.update', $employee->id) }}" method="POST" enctype="multipart/form-data">
         @csrf
         @method('PUT')
 
@@ -54,6 +54,22 @@
         <div class="mb-3">
             <label for="salary" class="form-label">Salary</label>
             <input type="number" name="salary" id="salary" class="form-control" value="{{ $employee->salary }}" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="photo" class="form-label">Upload Photo</label>
+            <input type="file" name="photo" id="photo" class="form-control" accept="image/*">
+            @if($employee->photo)
+                <img src="{{ asset('storage/' . $employee->photo) }}" alt="Employee Photo" class="mt-2" style="max-width: 150px;">
+            @endif
+        </div>
+
+        <div class="mb-3">
+            <label for="employment_status" class="form-label">Employment Status</label>
+            <select name="employment_status" id="employment_status" class="form-control" required>
+                <option value="active" {{ $employee->employment_status == 'active' ? 'selected' : '' }}>Active</option>
+                <option value="inactive" {{ $employee->employment_status == 'inactive' ? 'selected' : '' }}>Inactive</option>
+            </select>
         </div>
 
         <button type="submit" class="btn btn-primary">Update</button>

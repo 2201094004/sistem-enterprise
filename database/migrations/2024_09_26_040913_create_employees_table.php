@@ -22,6 +22,8 @@ return new class extends Migration
             $table->string('sex');
             $table->string('phone');
             $table->decimal('salary', 10, 2);
+            $table->string('photo')->nullable(); // Kolom untuk foto
+            $table->enum('employment_status', ['active', 'inactive', 'on_leave'])->default('active'); // Kolom untuk status kerja
             $table->timestamps();
         });
     }

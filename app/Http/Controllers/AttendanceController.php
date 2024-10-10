@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Attendance;
+use App\Models\Employees; // Pastikan model ini sesuai dengan nama yang kamu buat
 use Illuminate\Http\Request;
 
 class AttendanceController extends Controller
@@ -12,7 +13,8 @@ class AttendanceController extends Controller
      */
     public function index()
     {
-        //
+        $attendances = Attendance::with(['employee.user'])->get(); // Eager load untuk menghindari N+1 problem
+        return view('admin.attendance.index', compact('attendances'));
     }
 
     /**
@@ -20,7 +22,8 @@ class AttendanceController extends Controller
      */
     public function create()
     {
-        //
+        $employees = Employees::with('user')->get(); // Ambil semua karyawan untuk dropdown
+        return view('admin.attendance.create', compact('employees'));
     }
 
     /**
@@ -28,7 +31,14 @@ class AttendanceController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'user_id'         => 'required|exists:employees,user_id', // Validasi jika user_id ada di tabel employees
+            'attendance_date' => 'required|date',
+            'status'          => 'required|in:present,absent,on_leave',
+        ]);
+
+        Attendance::create($validatedData);
+        return redirect()->route('attendance.index')->with('success', 'Absensi berhasil ditambahkan.');
     }
 
     /**
@@ -36,7 +46,8 @@ class AttendanceController extends Controller
      */
     public function show(Attendance $attendance)
     {
-        //
+        // Jika kamu ingin menampilkan detail absensi, bisa diimplementasikan di sini
+        return view('attendance.show', compact('attendance'));
     }
 
     /**
@@ -44,7 +55,8 @@ class AttendanceController extends Controller
      */
     public function edit(Attendance $attendance)
     {
-        //
+        $employees = Employees::with('user')->get(); // Ambil semua karyawan untuk dropdown
+        return view('admin.attendance.edit', compact('attendance', 'employees'));
     }
 
     /**
@@ -52,7 +64,14 @@ class AttendanceController extends Controller
      */
     public function update(Request $request, Attendance $attendance)
     {
-        //
+        $validatedData = $request->validate([
+            'user_id'         => 'required|exists:employees,user_id',
+            'attendance_date' => 'required|date',
+            'status'          => 'required|in:present,absent,on_leave',
+        ]);
+
+        $attendance->update($validatedData);
+        return redirect()->route('attendance.index')->with('success', 'Absensi berhasil diperbarui.');
     }
 
     /**
@@ -60,6 +79,7 @@ class AttendanceController extends Controller
      */
     public function destroy(Attendance $attendance)
     {
-        //
+        $attendance->delete();
+        return redirect()->route('attendance.index')->with('success', 'Absensi berhasil dihapus.');
     }
 }

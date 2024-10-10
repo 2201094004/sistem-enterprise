@@ -7,8 +7,17 @@ use Illuminate\Database\Eloquent\Model;
 class Employees extends Model
 {
     protected $fillable = [
-        'user_id', 'depart_id', 'address', 'place_of_birth', 'dob', 
-        'religion', 'sex', 'phone', 'salary'
+        'user_id', 
+        'depart_id', 
+        'address', 
+        'place_of_birth', 
+        'dob', 
+        'religion', 
+        'sex', 
+        'phone', 
+        'salary', 
+        'photo', // Tambahkan kolom foto
+        'employment_status' // Tambahkan kolom status kerja
     ];
 
     // Hubungan ke model Department

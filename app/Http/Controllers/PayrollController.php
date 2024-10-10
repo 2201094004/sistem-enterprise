@@ -33,7 +33,7 @@ class PayrollController extends Controller
     {
         $request->validate([
             'user_id' => 'required|exists:users,id',
-            'salary' => 'required|numeric',
+            'salary'  => 'required|numeric',
         ]);
 
         Payroll::create($request->all());
@@ -57,7 +57,7 @@ class PayrollController extends Controller
     {
         $request->validate([
             'user_id' => 'required|exists:users,id',
-            'salary' => 'required|numeric',
+            'salary'  => 'required|numeric',
         ]);
 
         $payroll->update($request->all()); 

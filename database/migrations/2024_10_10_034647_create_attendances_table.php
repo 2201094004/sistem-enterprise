@@ -9,18 +9,24 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up(): void
+    public function up()
     {
         Schema::create('attendances', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('user_id'); // Kolom user_id
+            $table->date('attendance_date'); // Tanggal absensi
+            $table->enum('status', ['present', 'absent', 'on_leave'])->default('present'); // Status absensi
             $table->timestamps();
+
+            // Definisikan foreign key untuk user_id
+            $table->foreign('user_id')->references('user_id')->on('employees')->onDelete('cascade');
         });
     }
 
     /**
      * Reverse the migrations.
      */
-    public function down(): void
+    public function down()
     {
         Schema::dropIfExists('attendances');
     }

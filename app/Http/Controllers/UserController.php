@@ -25,8 +25,8 @@ class UserController extends Controller
     // Simpan user baru
     public function store(Request $request) {
         $validated = $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|email|unique:users,email',
+            'name'     => 'required|string|max:255',
+            'email'    => 'required|email|unique:users,email',
             'password' => 'required|string|min:5|confirmed', // Validasi password
         ]);
 
@@ -47,7 +47,7 @@ class UserController extends Controller
     // Update user yang ada
     public function update(Request $request, User $user) {
         $validated = $request->validate([
-            'name' => 'required|string|max:255',
+            'name'  => 'required|string|max:255',
             'email' => 'required|email|unique:users,email,'.$user->id,
             
         ]);

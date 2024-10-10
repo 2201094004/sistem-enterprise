@@ -4,7 +4,7 @@
 <div class="container">
     <h3>Tambah Employee</h3>
 
-    <form action="{{ route('employees.store') }}" method="POST">
+    <form action="{{ route('employees.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="mb-3">
             <label for="user_id" class="form-label">User ID</label>
@@ -52,6 +52,19 @@
         <div class="mb-3">
             <label for="salary" class="form-label">Salary</label>
             <input type="number" name="salary" id="salary" class="form-control" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="photo" class="form-label">Upload Photo</label>
+            <input type="file" name="photo" id="photo" class="form-control" accept="image/*">
+        </div>
+
+        <div class="mb-3">
+            <label for="employment_status" class="form-label">Employment Status</label>
+            <select name="employment_status" id="employment_status" class="form-control" required>
+                <option value="active">Active</option>
+                <option value="inactive">Inactive</option>
+            </select>
         </div>
 
         <button type="submit" class="btn btn-success">Simpan</button>

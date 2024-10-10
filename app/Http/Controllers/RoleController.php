@@ -26,13 +26,13 @@ class RoleController extends Controller
     {
         // Validasi input
         $request->validate([
-            'name' => 'required|string|max:255',
+            'name'        => 'required|string|max:255',
             'permissions' => 'array', // Pastikan permissions adalah array
         ]);
 
         // Membuat role baru dengan field 'guard_name'
         $role = Role::create([
-            'name' => $request->input('name'),
+            'name'       => $request->input('name'),
             'guard_name' => 'web', // Sesuaikan guard dengan kebutuhan
         ]);
 

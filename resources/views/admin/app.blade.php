@@ -67,14 +67,12 @@
                         </a>
                     </li>
                     <li class="menu-item">
-                        <a href="{{ route('roles.index') }}" class="menu-link">
+                        <a href="{{ route('attendance.index') }}" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-time-five"></i>
                             <div data-i18n="Menu 2">Attendances</div>
-                        </a>
+                        </a>                        
                     </li>
-                </ul>
-                
-                <ul class="menu-inner py-1" style="margin-top: 0;">
+                    
                     <!-- Main Menu -->
                     <li class="menu-header small text-uppercase">
                         <span class="menu-header-text">User Management</span>
@@ -91,7 +89,9 @@
                             <div data-i18n="Menu 2">Roles</div>
                         </a>
                     </li>
-                </ul>                
+                </ul>
+                
+                          
                 
             </aside>
             <!-- / Menu -->

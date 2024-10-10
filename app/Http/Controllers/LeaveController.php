@@ -32,11 +32,11 @@ class LeaveController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'user_id' => 'required|exists:employees,user_id', // Validasi jika user_id ada di tabel employees
-            'description' => 'required|string',
+            'user_id'       => 'required|exists:employees,user_id', // Validasi jika user_id ada di tabel employees
+            'description'   => 'required|string',
             'start_of_date' => 'required|date',
-            'end_of_date' => 'required|date|after_or_equal:start_of_date',
-            'status' => 'required|in:pending,approved,rejected',
+            'end_of_date'   => 'required|date|after_or_equal:start_of_date',
+            'status'        => 'required|in:pending,approved,rejected',
         ]);
 
         Leave::create($validatedData);
@@ -58,11 +58,11 @@ class LeaveController extends Controller
     public function update(Request $request, Leave $leave)
     {
         $validatedData = $request->validate([
-            'user_id' => 'required|exists:employees,user_id',
-            'description' => 'required|string',
+            'user_id'       => 'required|exists:employees,user_id',
+            'description'   => 'required|string',
             'start_of_date' => 'required|date',
-            'end_of_date' => 'required|date|after_or_equal:start_of_date',
-            'status' => 'required|in:pending,approved,rejected',
+            'end_of_date'   => 'required|date|after_or_equal:start_of_date',
+            'status'        => 'required|in:pending,approved,rejected',
         ]);
 
         $leave->update($validatedData);

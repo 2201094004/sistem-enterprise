@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Employees;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class EmployeesController extends Controller
 {
@@ -31,20 +32,27 @@ class EmployeesController extends Controller
     {
         // Validate input fields
         $data = $request->validate([
-            'user_id' => 'required|exists:users,id', // Ensure the user exists in the users table
-            'depart_id' => 'required|exists:departments,id', // Ensure the department exists
-            'address' => 'required',
+            'user_id'        => 'required|exists:users,id', // Ensure the user exists in the users table
+            'depart_id'      => 'required|exists:departments,id', // Ensure the department exists
+            'address'        => 'required',
             'place_of_birth' => 'required',
-            'dob' => 'required|date',
-            'religion' => 'required',
-            'sex' => 'required',
-            'phone' => 'required|numeric',
-            'salary' => 'required|numeric',
+            'dob'            => 'required|date',
+            'religion'       => 'required',
+            'sex'            => 'required',
+            'phone'          => 'required|numeric',
+            'salary'         => 'required|numeric',
+            'photo'          => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048', // Validate photo
+            'employment_status' => 'required|in:active,inactive', // Validate employment status
         ]);
+
+        // Handle photo upload
+        if ($request->hasFile('photo')) {
+            $data['photo'] = $request->file('photo')->store('photos', 'public');
+        }
 
         Employees::create($data); // Save the validated data to the database
 
-        return redirect()->route('admin.employees.index')->with('success', 'Employee created successfully!');
+        return redirect()->route('employees.index')->with('success', 'Employee created successfully!');
     }
 
     /**
@@ -53,7 +61,7 @@ class EmployeesController extends Controller
     public function edit($id)
     {
         $employee = Employees::findOrFail($id); // Find the employee by ID
-        return view('employees.edit', compact('employee')); // Show the employee edit form
+        return view('admin.employees.edit', compact('employee')); // Show the employee edit form
     }
 
     /**
@@ -63,18 +71,30 @@ class EmployeesController extends Controller
     {
         // Validate input fields
         $data = $request->validate([
-            'user_id' => 'required|exists:users,id',
-            'depart_id' => 'required|exists:departments,id',
-            'address' => 'required',
+            'user_id'        => 'required|exists:users,id',
+            'depart_id'      => 'required|exists:departments,id',
+            'address'        => 'required',
             'place_of_birth' => 'required',
-            'dob' => 'required|date',
-            'religion' => 'required',
-            'sex' => 'required',
-            'phone' => 'required|numeric',
-            'salary' => 'required|numeric',
+            'dob'            => 'required|date',
+            'religion'       => 'required',
+            'sex'            => 'required',
+            'phone'          => 'required|numeric',
+            'salary'         => 'required|numeric',
+            'photo'          => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048', // Validate photo
+            'employment_status' => 'required|in:active,inactive', // Validate employment status
         ]);
 
         $employee = Employees::findOrFail($id); // Find the employee by ID
+
+        // Handle photo upload if exists
+        if ($request->hasFile('photo')) {
+            // Delete old photo if exists
+            if ($employee->photo) {
+                Storage::disk('public')->delete($employee->photo);
+            }
+            $data['photo'] = $request->file('photo')->store('photos', 'public');
+        }
+
         $employee->update($data); // Update the employee data in the database
 
         return redirect()->route('employees.index')->with('success', 'Employee updated successfully!');
@@ -86,6 +106,12 @@ class EmployeesController extends Controller
     public function destroy($id)
     {
         $employee = Employees::findOrFail($id); // Find the employee by ID
+
+        // Delete photo if exists
+        if ($employee->photo) {
+            Storage::disk('public')->delete($employee->photo);
+        }
+
         $employee->delete(); // Delete the employee from the database
 
         return redirect()->route('employees.index')->with('success', 'Employee deleted successfully!');

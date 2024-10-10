@@ -36,7 +36,7 @@
                         <form action="{{ route('leave.destroy', $leave->id) }}" method="POST" style="display:inline-block;">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this leave?')">Delete</button>
+                            <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Anda Yakin Data Ini Di Hapus?')">Delete</button>
                         </form>
                     </td>
                 </tr>

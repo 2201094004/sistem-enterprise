@@ -19,6 +19,12 @@ class Leave extends Model
         'status',
     ];
 
+    // Menambahkan casting untuk kolom tanggal
+    protected $casts = [
+        'start_of_date' => 'datetime',
+        'end_of_date'   => 'datetime',
+    ];
+
     /**
      * Get the employee that owns the leave.
      */
