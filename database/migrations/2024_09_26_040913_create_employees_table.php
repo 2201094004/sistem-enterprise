@@ -1,5 +1,4 @@
 <?php
-
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -18,7 +17,7 @@ return new class extends Migration
             $table->string('address');
             $table->string('place_of_birth');
             $table->date('dob');
-            $table->string('religion');
+            $table->enum('religion', ['Islam', 'Kristen', 'Hindu', 'Buddha', 'Others']); // Perbaikan pada tipe data
             $table->string('sex');
             $table->string('phone');
             $table->decimal('salary', 10, 2);

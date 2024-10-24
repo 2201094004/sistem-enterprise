@@ -3,7 +3,6 @@
 namespace Database\Seeders;
 
 use App\Models\User;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class UserSeeder extends Seeder
@@ -13,26 +12,29 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
-        $adi = User::updateORcreate([
+        $adi = User::updateOrCreate([
+            'email' => 'adi@email.com', // Gunakan email sebagai kunci unik
+        ], [
             'name' => 'adi',
-            'email' => 'adi@email.com',
             'password' => bcrypt('password'),
         ]);
         $adi->assignRole('admin');
 
-        $budi = User::updateORcreate([
-            'name' => 'Budi',
+        $budi = User::updateOrCreate([
             'email' => 'budi@email.com',
+        ], [
+            'name' => 'Budi',
             'password' => bcrypt('password'),
         ]);
         $budi->assignRole('operator');
 
-        $cindy = User::updateORcreate([
-            'name' => 'cindy',
+        $cindy = User::updateOrCreate([
             'email' => 'cindy@email.com',
+        ], [
+            'name' => 'cindy',
             'password' => bcrypt('password'),
         ]);
-        $cindy->assignRole('operator'); 
-        $cindy->givePermissionTo('delete users'); //memberikan akses permission langsung
+        $cindy->assignRole('operator');
+        $cindy->givePermissionTo('delete users'); // Memberikan akses permission langsung
     }
 }
