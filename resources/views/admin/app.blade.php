@@ -6,7 +6,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
-    <title>Laravel Admin Starter | Powered by Laravel 10, Bootstrap 5, Sneat Admin Template</title>
+    <title>Hallo Admin Sistem Interprise</title>
     <meta name="description" content="" />
 
     <!-- Include your custom styles here -->

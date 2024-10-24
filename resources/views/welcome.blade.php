@@ -7,6 +7,6 @@
     <title>Welcome</title>
 </head>
 <body>
-    <h1>Welcome to Laravel!</h1>
+    <h1>Welcome to Sistem Interprise!</h1>
 </body>
 </html>
