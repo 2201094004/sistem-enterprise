@@ -44,55 +44,75 @@
                     </li>
                     <li class="menu-item">
                         <a href="{{ route('departments.index') }}" class="menu-link">
-                            <i class="menu-icon tf-icons bx bx-building-house"></i>
+                            <i class="menu-icon tf-icons bx bx-building"></i> <!-- Ganti ikon -->
                             <div data-i18n="Menu 1">Departments</div>
                         </a>
                     </li>                    
                     <li class="menu-item">
                         <a href="{{ route('employees.index') }}" class="menu-link">
-                            <i class="menu-icon tf-icons bx bx-group"></i>
+                            <i class="menu-icon tf-icons bx bx-user-circle"></i> <!-- Ganti ikon -->
                             <div data-i18n="Menu 2">Employees</div>
                         </a>
                     </li>
                     <li class="menu-item">
                         <a href="{{ route('payroll.index') }}" class="menu-link">
-                            <i class="menu-icon tf-icons bx bx-wallet"></i>
+                            <i class="menu-icon tf-icons bx bx-wallet"></i> <!-- Ganti ikon -->
                             <div data-i18n="Menu 2">Payroll</div>
                         </a>
                     </li>
                     <li class="menu-item">
                         <a href="{{ route('leave.index') }}" class="menu-link">
-                            <i class="menu-icon tf-icons bx bx-calendar"></i>
+                            <i class="menu-icon tf-icons bx bx-calendar-edit"></i> <!-- Ganti ikon -->
                             <div data-i18n="Menu 2">Leave</div>
                         </a>
                     </li>
                     <li class="menu-item">
                         <a href="{{ route('attendance.index') }}" class="menu-link">
-                            <i class="menu-icon tf-icons bx bx-time-five"></i>
+                            <i class="menu-icon tf-icons bx bx-time-five"></i> <!-- Ganti ikon -->
                             <div data-i18n="Menu 2">Attendances</div>
                         </a>                        
                     </li>
-                    
-                    <!-- Main Menu -->
+
+                    <!-- Main Customer -->
                     <li class="menu-header small text-uppercase">
-                        <span class="menu-header-text">User Management</span>
+                        <span class="menu-header-text">Customer Relationship Management</span>
                     </li>
                     <li class="menu-item">
-                        <a href="{{ route('submenu1') }}" class="menu-link ">
-                            <i class="menu-icon tf-icons bx bx-user"></i>
-                            <div data-i18n="Menu 1">Users</div>
+                        <a href="{{ route('customers.index') }}" class="menu-link">
+                            <i class="menu-icon tf-icons bx bx-user"></i> <!-- Tetap sama -->
+                            <div data-i18n="Menu 1">Customer</div>
+                        </a>
+                    </li>                    
+                    <li class="menu-item">
+                        <a href="{{ route('promotions.index') }}" class="menu-link">
+                            <i class="menu-icon tf-icons bx bx-star"></i> <!-- Ganti ikon -->
+                            <div data-i18n="Menu 2">Promotions</div>
                         </a>
                     </li>
                     <li class="menu-item">
-                        <a href="{{ route('roles.index') }}" class="menu-link">
-                            <i class="menu-icon tf-icons bx bx-shield"></i>
-                            <div data-i18n="Menu 2">Roles</div>
+                        <a href="{{ route('send-promotions.index') }}" class="menu-link">
+                            <i class="menu-icon tf-icons bx bx-send"></i> <!-- Ganti ikon -->
+                            <div data-i18n="Menu 2">Send Promotions</div>
                         </a>
                     </li>
-                </ul>
+                </ul>  
                 
-                          
-                
+                <!-- Main Menu -->
+                <li class="menu-header small text-uppercase">
+                    <span class="menu-header-text">User Management</span>
+                </li>
+                <li class="menu-item">
+                    <a href="{{ route('submenu1') }}" class="menu-link ">
+                        <i class="menu-icon tf-icons bx bx-user"></i>
+                        <div data-i18n="Menu 1">Users</div>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="{{ route('roles.index') }}" class="menu-link">
+                        <i class="menu-icon tf-icons bx bx-shield"></i>
+                        <div data-i18n="Menu 2">Roles</div>
+                    </a>
+                </li>
             </aside>
             <!-- / Menu -->
 
@@ -186,36 +206,35 @@
                     <!-- Main Content -->
                     <div class="container-xxl flex-grow-1 container-p-y">
                         <div class="row">
-                            @yield('content') <!-- This is where the page-specific content will go -->
+                            @yield('content')
                         </div>
                     </div>
                     <!-- / Main Content -->
 
-                    {{-- <!-- Footer -->
+                    <!-- Footer -->
                     <footer class="content-footer footer bg-footer-theme">
-                        <div class="container-xxl d-flex flex-wrap justify-content-between py-2 flex-md-row flex-column">
-                            <div class="mb-2 mb-md-0">
-                                © <script>document.write(new Date().getFullYear());</script>
-                                , made with ❤️ by 
-                                <a href="https://themeselection.com" target="_blank" class="footer-link fw-bolder">ThemeSelection</a>
+                        <div class="footer-container d-flex justify-content-between py-1">
+                            <div class="footer-links">
+                                <a href="#" class="footer-link me-4">About</a>
+                                <a href="#" class="footer-link me-4">Help</a>
+                                <a href="#" class="footer-link me-4">Contact</a>
                             </div>
+                            {{-- <div class="footer-copyright">
+                                &copy; <script>
+                                    document.write(new Date().getFullYear());
+                                </script>, made with ❤️ by Your Name
+                            </div> --}}
                         </div>
                     </footer>
-                    <!-- / Footer --> --}}
-                    <div class="content-backdrop fade"></div>
+                    <!-- / Footer -->
                 </div>
                 <!-- / Content wrapper -->
             </div>
-            <!-- / Layout page -->
+            <!-- / Layout container -->
         </div>
-
-        <!-- Overlay -->
-        <div class="layout-overlay layout-menu-toggle"></div>
     </div>
-    <!-- / Layout wrapper -->
 
     <!-- Include your custom scripts here -->
     @include('admin.scripts.script')
-
 </body>
 </html>

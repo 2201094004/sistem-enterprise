@@ -33,7 +33,13 @@
 
         <div class="mb-3">
             <label for="religion" class="form-label">Religion</label>
-            <input type="text" name="religion" id="religion" class="form-control" required>
+            <select name="religion" id="religion" class="form-control" required>
+                <option value="Islam">Islam</option>
+                <option value="Kristen">Kristen</option>
+                <option value="Hindu">Hindu</option>
+                <option value="Buddha">Buddha</option>
+                <option value="Others">Others</option>
+            </select>
         </div>
 
         <div class="mb-3">
